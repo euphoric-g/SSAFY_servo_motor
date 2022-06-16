@@ -7,7 +7,7 @@
 #include "lib/PosInfo.h"
 #include "lib/WaypointInfo.h"
 
-extern void example(void);
+Car::ControlValues example(Car::CarStateValues &sensing_info);
 
 // cognition
 
@@ -27,6 +27,6 @@ extern WaypointInfo judge_path_smoothing(Car::CarStateValues &sensing_info, Wayp
 
 // control
 
-extern std::pair<float, float> control_throttle_break(WaypointInfo waypoint);
+extern std::pair<float, float> control_throttle_brake(Car::CarStateValues &sensing_info, WaypointInfo waypoint);
 extern float control_steering(Car::CarStateValues &sensing_info, WaypointInfo waypoint);
 extern float control_steering_coefficient(Car::CarStateValues &sensing_info, WaypointInfo waypoint);

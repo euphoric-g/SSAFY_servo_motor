@@ -23,8 +23,14 @@
     <ClCompile Include="lib\cognition_locate_conversion.cpp" />
     <ClCompile Include="lib\cognition_obstacles_to_PosInfo.cpp" />
     <ClCompile Include="lib\cognition_opponet_to_PosInfo.cpp" />
+    <ClCompile Include="lib\cognition_predict_collision_between_two_points.cpp" />
+    <ClCompile Include="lib\cognition_predict_road_departure.cpp" />
+    <ClCompile Include="lib\cognition_road_departure.cpp" />
     <ClCompile Include="lib\cognition_waypoints-to_PosInfo.cpp" />
-    <ClCompile Include="lib\function_example.cpp" />
+    <ClCompile Include="lib\control_steering.cpp" />
+    <ClCompile Include="lib\control_steering_coefficient.cpp" />
+    <ClCompile Include="lib\control_throttle_brake.cpp" />
+    <ClCompile Include="lib\example.cpp" />
     <ClCompile Include="lib\PosInfo.h" />
     <ClCompile Include="lib\WaypointInfo.cpp" />
     <ClCompile Include="lib\WaypointInfo.h" />

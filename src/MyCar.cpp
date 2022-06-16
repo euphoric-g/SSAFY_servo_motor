@@ -12,10 +12,14 @@ bool enable_api_control = true;	// true(Controlled by code) /false(Controlled by
 
 ControlValues control_driving(CarStateValues sensing_info)
 {
-	// example();
 
-	auto ret = cognition_opponent_to_PosInfo(sensing_info);
-	cout << "return : " << ret.x << ' ' << ret.y << '\n';
+	/*
+	// 구현한 함수 호출 테스트
+	// 실행 시 정상적으로 값이 출력됨을 확인할 수 있다.
+	
+	PosInfo p1(1, 4), p2(5, 1), p3(0, 5);
+	cout << "CCW TEST : " << ccw(p1, p2, p3) << '\n';
+	*/
 
 	if (is_debug)
 	{
@@ -70,10 +74,14 @@ ControlValues control_driving(CarStateValues sensing_info)
 	// Editing area starts from here
 	//	
 
-	// Moving straight forward
+	// 시나리오 1. Moving straight forward
 	car_controls.steering = 0;
 	car_controls.throttle = 1;
 	car_controls.brake = 0;
+
+	// 시나리오 2. basic 예제
+	car_controls = example(sensing_info);
+
 
 	if (is_debug)
 	{

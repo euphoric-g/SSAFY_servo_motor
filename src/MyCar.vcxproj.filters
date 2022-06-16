@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="MyCar.cpp" />
-    <ClCompile Include="lib\function_example.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
     <ClCompile Include="lib\ccw.cpp">
       <Filter>lib</Filter>
     </ClCompile>
@@ -27,6 +24,27 @@
       <Filter>lib</Filter>
     </ClCompile>
     <ClCompile Include="lib\cognition_waypoints-to_PosInfo.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\cognition_predict_road_departure.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\cognition_road_departure.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\cognition_predict_collision_between_two_points.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\control_steering.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\control_steering_coefficient.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\control_throttle_brake.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\example.cpp">
       <Filter>lib</Filter>
     </ClCompile>
   </ItemGroup>
