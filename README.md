@@ -15,9 +15,9 @@ respository를 clone 한 후 src/MyCar.vcxproj 파일을 열어서 작업해주�
 
 ### 필요 프로그램
 
-Git GUI, Git BASH 등 버전 관리 프로그램
-Microsoft Visual Studio 2017 Community (Windows8.1 SDK 필수)
-싸피레이스 시뮬레이터(ssafy_sim_2022_0608_1800_license)
+Git GUI, Git BASH 등 버전 관리 프로그램   
+Microsoft Visual Studio 2017 Community (Windows8.1 SDK 필수)   
+싸피레이스 시뮬레이터(ssafy_sim_2022_0608_1800_license)   
 
 
 ### 새로운 함수를 추가하고 싶을 때
