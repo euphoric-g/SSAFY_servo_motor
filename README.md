@@ -31,4 +31,4 @@ respository를 clone 한 후 src/MyCar.vcxproj 파일을 열어서 작업해주�
 
 #### 20220617
 
-* 개발 준비 완료
+* 개발 준비 완료 (다른 컴퓨터에서 작동 확인됨)
