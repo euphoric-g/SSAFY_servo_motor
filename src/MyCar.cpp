@@ -7,8 +7,8 @@
 using namespace std;
 using namespace Car;
 
-bool is_debug = false;
-bool enable_api_control = true;	// true(Controlled by code) /false(Controlled by keyboard)
+bool is_debug = true;
+bool enable_api_control = false;	// true(Controlled by code) /false(Controlled by keyboard)
 
 void test_two_line() {
 	while (1) {
@@ -21,6 +21,16 @@ void test_two_line() {
 		LineEq line2(a, b, c);
 		PosInfo crossing = line1 * line2;
 		cout << "crossing at (" << crossing.x << ", " << crossing.y << ")\n";
+	}
+}
+
+void test_line_eq() {
+	while (1) {
+		cout << "Enter slope and a point for line equation : ";
+		float slope, x, y;
+		cin >> slope >> x >> y;
+		LineEq line(slope, PosInfo(x, y));
+		cout << line.a << "x + (" << line.b << ")y + (" << line.c << ") = 0\n";
 	}
 }
 
@@ -41,7 +51,16 @@ void test_line_circle() {
 ControlValues control_driving(CarStateValues sensing_info)
 {
 	// test_two_line();
+	// test_line_eq();
 	// test_line_circle();
+
+	/*
+	cout << "===========================================================\n";
+	for (auto &waypoint : cog_waypoints_to_PosInfo(sensing_info)) {
+		cout << "(" << waypoint.x << ", " << waypoint.y << ")\n";
+	}
+	cout << "===========================================================\n";
+	*/
 
 	if (is_debug)
 	{

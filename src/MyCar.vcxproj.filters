@@ -35,9 +35,6 @@
     <ClCompile Include="lib\cog_road_departure.cpp">
       <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="lib\cog_waypoints-to_PosInfo.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
     <ClCompile Include="lib\ctl_steering.cpp">
       <Filter>lib</Filter>
     </ClCompile>
@@ -59,6 +56,9 @@
     <ClCompile Include="lib\CircEq.cpp">
       <Filter>lib</Filter>
     </ClCompile>
+    <ClCompile Include="lib\cog_waypoints_to_PosInfo.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lib">
@@ -71,6 +71,9 @@
       <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="lib\CircEq.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\ccw.h">
       <Filter>lib</Filter>
     </ClInclude>
   </ItemGroup>

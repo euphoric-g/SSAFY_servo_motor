@@ -8,6 +8,7 @@
 #include "lib/WaypointInfo.h"
 #include "lib/LineEq.h"
 #include "lib/CircEq.h"
+#include "lib/ccw.h"
 
 Car::ControlValues example(Car::CarStateValues &sensing_info);
 

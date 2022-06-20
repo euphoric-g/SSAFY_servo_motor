@@ -16,6 +16,7 @@ public:
 	float c;
 	LineEq() : initialized(false) {}
 	LineEq(float a, float b, float c) : a(a), b(b), c(c) {}
+	LineEq(float grad, PosInfo p);
 	LineEq(PosInfo p1, PosInfo p2);
 	LineEq operator+(LineEq rhs);
 	LineEq operator-(LineEq rhs);

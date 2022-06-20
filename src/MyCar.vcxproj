@@ -27,7 +27,7 @@
     <ClCompile Include="lib\cog_predict_collision_between_two_points.cpp" />
     <ClCompile Include="lib\cog_predict_road_departure.cpp" />
     <ClCompile Include="lib\cog_road_departure.cpp" />
-    <ClCompile Include="lib\cog_waypoints-to_PosInfo.cpp" />
+    <ClCompile Include="lib\cog_waypoints_to_PosInfo.cpp" />
     <ClCompile Include="lib\ctl_steering.cpp" />
     <ClCompile Include="lib\ctl_steering_coefficient.cpp" />
     <ClCompile Include="lib\ctl_throttle_brake.cpp" />
@@ -41,6 +41,7 @@
     <ClCompile Include="MyCar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lib\ccw.h" />
     <ClInclude Include="lib\CircEq.h" />
     <ClInclude Include="lib\LineEq.h" />
     <ClInclude Include="src.h" />
@@ -143,6 +144,8 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)DrivingInterface\DrivingInterfaceLib;$(ProjectDir)DrivingInterface\AirLib\rpclib\include;$(ProjectDir)DrivingInterface\AirLib\eigen3;$(ProjectDir)DrivingInterface\AirLib\include;$(ProjectDir)DrivingInterface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <LanguageStandard>
+      </LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

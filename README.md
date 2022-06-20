@@ -36,3 +36,8 @@ Microsoft Visual Studio 2017 Community (Windows8.1 SDK 필수)
 #### 20220617
 
 * 개발 준비 완료 (다른 컴퓨터에서 작동 확인됨)
+
+#### 20220620
+
+* 직선, 원 연산용 LineEq, CircEq 클래스 추가
+* 중앙선을 좌표평면으로 대응시키는 cog_waypoints_to_PosInfo 함수 구현

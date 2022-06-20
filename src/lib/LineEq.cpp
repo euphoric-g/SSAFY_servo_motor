@@ -8,13 +8,17 @@ LineEq::LineEq(PosInfo p1, PosInfo p2) {
 	if (abs(p1.x - p2.x) <= 1e-4) {
 		a = 1;
 		b = 0;
-		c = p1.x;
+		c = -p1.x;
 	}
 	else {
 		a = (p2.y - p1.y);
 		b = -(p2.x - p1.x);
 		c = p1.y * (p2.x - p1.x) - p1.x * (p2.y - p1.y);
 	}
+}
+
+LineEq::LineEq(float grad, PosInfo p) {
+	*this = LineEq(p, p + PosInfo(1, grad));
 }
 
 LineEq LineEq::operator+(LineEq rhs) { return LineEq(a + rhs.a, b + rhs.b, c + rhs.c); }
@@ -28,6 +32,17 @@ PosInfo LineEq::operator*(LineEq rhs) {
 }
 
 std::pair<PosInfo, PosInfo> LineEq::operator*(CircEq rhs) {
+	if (b == 0) {
+		float d = (rhs.r * rhs.r) - (c / a + a)*(c / a + a);
+		if (d > 0) {
+			float x = -c / a;
+			float y0 = b + sqrtf(d);
+			float y1 = b - sqrtf(d);
+			return std::make_pair(PosInfo(x, y0), PosInfo(x, y1));
+		}
+		return std::make_pair(PosInfo(), PosInfo());
+
+	}
 	float m = -a / b, n = -c / b;
 	float d = (m * m * n * n) - (m * m + 1) * (n * n - rhs.r * rhs.r);
 	if (d > 0) {
