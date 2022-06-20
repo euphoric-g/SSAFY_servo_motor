@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lib\ccw.cpp" />
+    <ClCompile Include="lib\CircEq.cpp" />
     <ClCompile Include="lib\cog_locate_conversion.cpp" />
     <ClCompile Include="lib\cog_obstacles_to_PosInfo.cpp" />
     <ClCompile Include="lib\cog_opponet_to_PosInfo.cpp" />
@@ -33,12 +34,15 @@
     <ClCompile Include="lib\example.cpp" />
     <ClCompile Include="lib\jud_make_WaypointInfo_candidates.cpp" />
     <ClCompile Include="lib\jud_path_smoothing.cpp" />
+    <ClCompile Include="lib\LineEq.cpp" />
     <ClCompile Include="lib\PosInfo.h" />
     <ClCompile Include="lib\WaypointInfo.cpp" />
     <ClCompile Include="lib\WaypointInfo.h" />
     <ClCompile Include="MyCar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lib\CircEq.h" />
+    <ClInclude Include="lib\LineEq.h" />
     <ClInclude Include="src.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

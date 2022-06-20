@@ -1,22 +1,2 @@
-﻿  ccw.cpp
-  cog_locate_conversion.cpp
-  cog_obstacles_to_PosInfo.cpp
-  cog_opponet_to_PosInfo.cpp
-  cog_predict_collision_between_two_points.cpp
-  cog_predict_road_departure.cpp
-  cog_road_departure.cpp
-  cog_waypoints-to_PosInfo.cpp
-  ctl_steering.cpp
-  ctl_steering_coefficient.cpp
-  ctl_throttle_brake.cpp
-  example.cpp
-  jud_make_WaypointInfo_candidates.cpp
-  jud_path_smoothing.cpp
-  PosInfo.h
-  WaypointInfo.cpp
-  WaypointInfo.h
-  MyCar.cpp
-  코드를 생성하고 있습니다...
-  LINK : C:\Users\이재현\Desktop\SSAFY_servo_motor\src\Build\Debug\MyCar.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
-C:\Users\이재현\Desktop\SSAFY_servo_motor\src\Build\Debug\WaypointInfo.obj : warning LNK4042: 개체가 두 번 이상 지정되었습니다. 나머지는 무시됩니다.
-  MyCar.vcxproj -> C:\Users\이재현\Desktop\SSAFY_servo_motor\src\Build\Debug\MyCar.exe
+﻿  MyCar.cpp
+  MyCar.vcxproj -> D:\SSAFY\SSAFY Race\SSAFY_servo_motor\src\Build\Debug\MyCar.exe

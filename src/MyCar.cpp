@@ -10,16 +10,38 @@ using namespace Car;
 bool is_debug = false;
 bool enable_api_control = true;	// true(Controlled by code) /false(Controlled by keyboard)
 
+void test_two_line() {
+	while (1) {
+		cout << "Enter a, b, c for line equation 1 (ax + by + c = 0) : ";
+		float a, b, c;
+		cin >> a >> b >> c;
+		LineEq line1(a, b, c);
+		cout << "Enter a, b, c for line equation 2 (ax + by + c = 0) : ";
+		cin >> a >> b >> c;
+		LineEq line2(a, b, c);
+		PosInfo crossing = line1 * line2;
+		cout << "crossing at (" << crossing.x << ", " << crossing.y << ")\n";
+	}
+}
+
+void test_line_circle() {
+	while (1) {
+		cout << "Enter a, b, r for circle equation ((x-a)^2 + (y-b)^2 = r^2) : ";
+		float a, b, c;
+		cin >> a >> b >> c;
+		CircEq circ(a, b, c);
+		cout << "Enter a, b, c for line equation (ax + by + c = 0) : ";
+		cin >> a >> b >> c;
+		LineEq line(a, b, c);
+		auto crossing = line * circ;
+		cout << "crossing at (" << crossing.first.x << ", " << crossing.first.y << "), (" << crossing.second.x << ", " << crossing.second.y << ")\n";
+	}
+}
+
 ControlValues control_driving(CarStateValues sensing_info)
 {
-
-	/*
-	// 구현한 함수 호출 테스트
-	// 실행 시 정상적으로 값이 출력됨을 확인할 수 있다.
-	
-	PosInfo p1(1, 4), p2(5, 1), p3(0, 5);
-	cout << "CCW TEST : " << ccw(p1, p2, p3) << '\n';
-	*/
+	// test_two_line();
+	// test_line_circle();
 
 	if (is_debug)
 	{
