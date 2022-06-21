@@ -18,13 +18,4 @@
 #include "lib/ctl_steering.h"
 #include "lib/ctl_throttle_brake.h"
 
-Car::ControlValues example(Car::CarStateValues &sensing_info);
-
-// cognition
-
-extern float cog_predict_collision_between_two_points(Car::CarStateValues &sensing_info, PosInfo p1, PosInfo p2);
-
-// judge
-
-extern std::vector<WaypointInfo> jud_make_WaypointInfo_candidates(Car::CarStateValues &sensing_info);
-extern WaypointInfo jud_path_smoothing(Car::CarStateValues &sensing_info, WaypointInfo waypoint);
+#include "lib/example.h"

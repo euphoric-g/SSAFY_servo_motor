@@ -1,6 +1,4 @@
-#include "PosInfo.h"
-#include "WaypointInfo.h"
-#include "../DrivingInterface/DrivingInfo.h"
+#include "example.h"
 
 Car::ControlValues example(Car::CarStateValues &sensing_info) {
 	Car::ControlValues car_controls;

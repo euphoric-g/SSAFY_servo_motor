@@ -24,7 +24,6 @@
     <ClCompile Include="lib\cog_locate_conversion.cpp" />
     <ClCompile Include="lib\cog_obstacles_to_PosInfo.cpp" />
     <ClCompile Include="lib\cog_opponent_to_PosInfo.cpp" />
-    <ClCompile Include="lib\cog_predict_collision_between_two_points.cpp" />
     <ClCompile Include="lib\cog_predict_road_departure.cpp" />
     <ClCompile Include="lib\cog_road_departure.cpp" />
     <ClCompile Include="lib\cog_waypoints_to_PosInfo.cpp" />
@@ -33,8 +32,6 @@
     <ClCompile Include="lib\ctl_throttle_brake.cpp" />
     <ClCompile Include="lib\example.cpp" />
     <ClCompile Include="lib\internal_division.cpp" />
-    <ClCompile Include="lib\jud_make_WaypointInfo_candidates.cpp" />
-    <ClCompile Include="lib\jud_path_smoothing.cpp" />
     <ClCompile Include="lib\LineEq.cpp" />
     <ClCompile Include="lib\PosInfo.cpp" />
     <ClCompile Include="lib\PosInfo.h" />
@@ -53,6 +50,7 @@
     <ClInclude Include="lib\ctl_steering.h" />
     <ClInclude Include="lib\ctl_steering_coefficient.h" />
     <ClInclude Include="lib\ctl_throttle_brake.h" />
+    <ClInclude Include="lib\example.h" />
     <ClInclude Include="lib\internal_division.h" />
     <ClInclude Include="lib\LineEq.h" />
     <ClInclude Include="src.h" />

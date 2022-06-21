@@ -23,9 +23,6 @@
     <ClCompile Include="lib\cog_obstacles_to_PosInfo.cpp">
       <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="lib\cog_predict_collision_between_two_points.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
     <ClCompile Include="lib\cog_predict_road_departure.cpp">
       <Filter>lib</Filter>
     </ClCompile>
@@ -39,12 +36,6 @@
       <Filter>lib</Filter>
     </ClCompile>
     <ClCompile Include="lib\ctl_throttle_brake.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\jud_make_WaypointInfo_candidates.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\jud_path_smoothing.cpp">
       <Filter>lib</Filter>
     </ClCompile>
     <ClCompile Include="lib\LineEq.cpp">
@@ -107,6 +98,9 @@
       <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="lib\ctl_throttle_brake.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\example.h">
       <Filter>lib</Filter>
     </ClInclude>
   </ItemGroup>
