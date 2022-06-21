@@ -16,11 +16,11 @@
 #include "lib/cog_opponent_to_PosInfo.h"
 #include "lib/ctl_steering_coefficient.h"
 #include "lib/ctl_steering.h"
+#include "lib/ctl_throttle_brake.h"
 
 Car::ControlValues example(Car::CarStateValues &sensing_info);
 
 // cognition
-
 
 extern float cog_predict_collision_between_two_points(Car::CarStateValues &sensing_info, PosInfo p1, PosInfo p2);
 
@@ -28,7 +28,3 @@ extern float cog_predict_collision_between_two_points(Car::CarStateValues &sensi
 
 extern std::vector<WaypointInfo> jud_make_WaypointInfo_candidates(Car::CarStateValues &sensing_info);
 extern WaypointInfo jud_path_smoothing(Car::CarStateValues &sensing_info, WaypointInfo waypoint);
-
-// control
-
-extern std::pair<float, float> ctl_throttle_brake(Car::CarStateValues &sensing_info, WaypointInfo waypoint);
