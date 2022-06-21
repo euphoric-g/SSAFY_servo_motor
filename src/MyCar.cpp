@@ -64,7 +64,6 @@ ControlValues control_driving(CarStateValues sensing_info)
 	// test_line_eq();
 	// test_line_circle();
 
-	/*
 	cout << "========================= waypoints ==========================\n";
 	for (auto &waypoint : cog_waypoints_to_PosInfo(sensing_info)) {
 		cout << "(" << waypoint.x << ", " << waypoint.y << ")\n";
@@ -74,7 +73,6 @@ ControlValues control_driving(CarStateValues sensing_info)
 		cout << "(" << obstacle.x << ", " << obstacle.y << ")\n";
 	}
 	cout << "==============================================================\n";
-	*/
 
 	// test_locate_conversion(sensing_info);
 

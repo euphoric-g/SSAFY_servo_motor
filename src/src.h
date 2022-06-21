@@ -12,14 +12,16 @@
 #include "lib/cog_waypoints_to_PosInfo.h"
 #include "lib/cog_obstacles_to_PosInfo.h"
 #include "lib/cog_locate_conversion.h"
+#include "lib/cog_predict_road_departure.h"
+#include "lib/cog_opponent_to_PosInfo.h"
+#include "lib/ctl_steering_coefficient.h"
+#include "lib/ctl_steering.h"
 
 Car::ControlValues example(Car::CarStateValues &sensing_info);
 
 // cognition
 
-extern PosInfo cog_opponent_to_PosInfo(Car::CarStateValues &sensing_info);
-extern bool cog_predict_road_departure(Car::CarStateValues &sensing_info);
-extern bool cog_road_departure(Car::CarStateValues &sensing_info);
+
 extern float cog_predict_collision_between_two_points(Car::CarStateValues &sensing_info, PosInfo p1, PosInfo p2);
 
 // judge
@@ -30,5 +32,3 @@ extern WaypointInfo jud_path_smoothing(Car::CarStateValues &sensing_info, Waypoi
 // control
 
 extern std::pair<float, float> ctl_throttle_brake(Car::CarStateValues &sensing_info, WaypointInfo waypoint);
-extern float ctl_steering(Car::CarStateValues &sensing_info, WaypointInfo waypoint);
-extern float ctl_steering_coefficient(Car::CarStateValues &sensing_info, WaypointInfo waypoint);
