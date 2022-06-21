@@ -41,3 +41,11 @@ Microsoft Visual Studio 2017 Community (Windows8.1 SDK 필수)
 
 * 직선, 원 연산용 LineEq, CircEq 클래스 추가
 * 중앙선을 좌표평면으로 대응시키는 cog_waypoints_to_PosInfo 함수 구현
+
+#### 20220621
+
+* 직선의 내분점 계산을 위한 internal_division 함수 구현
+* PosInfo 클래스에 normalize 함수 구현(방향을 유지하며 원점과의 거리를 1로 만듦)
+* LineEq 클래스에 기울기를 반환하는 grad 함수 구현
+* distance, to_middle 값 쌍을 좌표평면으로 대응시키기 위한 cog_locate_conversion 함수 구현
+* 장애물 정보를 좌표평면으로 대응시키기 위한 cog_obstacles_to_PosInfo 함수 구현

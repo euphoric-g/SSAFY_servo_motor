@@ -32,9 +32,11 @@
     <ClCompile Include="lib\ctl_steering_coefficient.cpp" />
     <ClCompile Include="lib\ctl_throttle_brake.cpp" />
     <ClCompile Include="lib\example.cpp" />
+    <ClCompile Include="lib\internal_division.cpp" />
     <ClCompile Include="lib\jud_make_WaypointInfo_candidates.cpp" />
     <ClCompile Include="lib\jud_path_smoothing.cpp" />
     <ClCompile Include="lib\LineEq.cpp" />
+    <ClCompile Include="lib\PosInfo.cpp" />
     <ClCompile Include="lib\PosInfo.h" />
     <ClCompile Include="lib\WaypointInfo.cpp" />
     <ClCompile Include="lib\WaypointInfo.h" />
@@ -43,6 +45,10 @@
   <ItemGroup>
     <ClInclude Include="lib\ccw.h" />
     <ClInclude Include="lib\CircEq.h" />
+    <ClInclude Include="lib\cog_locate_conversion.h" />
+    <ClInclude Include="lib\cog_obstacles_to_PosInfo.h" />
+    <ClInclude Include="lib\cog_waypoints_to_PosInfo.h" />
+    <ClInclude Include="lib\internal_division.h" />
     <ClInclude Include="lib\LineEq.h" />
     <ClInclude Include="src.h" />
   </ItemGroup>

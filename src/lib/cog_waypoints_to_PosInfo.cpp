@@ -1,9 +1,4 @@
-#include <algorithm>
-
-#include "PosInfo.h"
-#include "LineEq.h"
-#include "ccw.h"
-#include "../DrivingInterface/DrivingInfo.h"
+#include "cog_waypoints_to_PosInfo.h"
 
 std::vector<PosInfo> cog_waypoints_to_PosInfo(Car::CarStateValues &sensing_info) {
 	using namespace std;
@@ -60,7 +55,6 @@ std::vector<PosInfo> cog_waypoints_to_PosInfo(Car::CarStateValues &sensing_info)
 
 		ret.push_back(choose);
 	}
-
 
 	return ret;
 }

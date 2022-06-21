@@ -59,6 +59,12 @@
     <ClCompile Include="lib\cog_waypoints_to_PosInfo.cpp">
       <Filter>lib</Filter>
     </ClCompile>
+    <ClCompile Include="lib\internal_division.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\PosInfo.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lib">
@@ -74,6 +80,18 @@
       <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="lib\ccw.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\cog_waypoints_to_PosInfo.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\cog_locate_conversion.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\internal_division.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\cog_obstacles_to_PosInfo.h">
       <Filter>lib</Filter>
     </ClInclude>
   </ItemGroup>

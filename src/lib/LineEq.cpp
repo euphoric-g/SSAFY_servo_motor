@@ -1,8 +1,4 @@
-#include "PosInfo.h"
 #include "LineEq.h"
-#include "CircEq.h"
-#include <cmath>
-#include <utility>
 
 LineEq::LineEq(PosInfo p1, PosInfo p2) {
 	if (abs(p1.x - p2.x) <= 1e-4) {
@@ -54,4 +50,8 @@ std::pair<PosInfo, PosInfo> LineEq::operator*(CircEq rhs) {
 	}
 	// b^2-4ac <= 0 (undefined)
 	return std::make_pair(PosInfo(), PosInfo());
+}
+
+float LineEq::grad() {
+	return -a / b;
 }

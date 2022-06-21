@@ -48,6 +48,16 @@ void test_line_circle() {
 	}
 }
 
+void test_locate_conversion(CarStateValues &sensing_info) {
+	while (1) {
+		cout << "Enter distance, to_middle to calculate : ";
+		float distance, to_middle;
+		cin >> distance >> to_middle;
+		auto calc = cog_locate_conversion(sensing_info, distance, to_middle);
+		cout << "(" << calc.x << ", " << calc.y << ")\n";
+	}
+}
+
 ControlValues control_driving(CarStateValues sensing_info)
 {
 	// test_two_line();
@@ -55,12 +65,18 @@ ControlValues control_driving(CarStateValues sensing_info)
 	// test_line_circle();
 
 	/*
-	cout << "===========================================================\n";
+	cout << "========================= waypoints ==========================\n";
 	for (auto &waypoint : cog_waypoints_to_PosInfo(sensing_info)) {
 		cout << "(" << waypoint.x << ", " << waypoint.y << ")\n";
 	}
-	cout << "===========================================================\n";
+	cout << "========================= obstacles ==========================\n";
+	for (auto &obstacle : cog_obstacles_to_PosInfo(sensing_info)) {
+		cout << "(" << obstacle.x << ", " << obstacle.y << ")\n";
+	}
+	cout << "==============================================================\n";
 	*/
+
+	// test_locate_conversion(sensing_info);
 
 	if (is_debug)
 	{

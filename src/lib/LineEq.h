@@ -22,4 +22,5 @@ public:
 	LineEq operator-(LineEq rhs);
 	PosInfo operator*(LineEq rhs);
 	std::pair<PosInfo, PosInfo> operator*(CircEq rhs);
+	float grad();
 };
