@@ -1,6 +1,5 @@
 #pragma once
 
-#include "PosInfo.h"
 #include "WaypointInfo.h"
 #include "../DrivingInterface/DrivingInfo.h"
 

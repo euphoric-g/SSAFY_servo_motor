@@ -2,7 +2,6 @@
 
 #include "PosInfo.h"
 #include "CircEq.h"
-#include <cmath>
 #include <utility>
 
 class CircEq;

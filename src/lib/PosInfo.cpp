@@ -1,5 +1,7 @@
 #include "PosInfo.h"
 
+#include <cmath>
+
 PosInfo PosInfo::operator+(PosInfo rhs) {
 	return PosInfo(x + rhs.x, y + rhs.y);
 }

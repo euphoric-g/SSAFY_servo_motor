@@ -35,6 +35,8 @@
     <ClCompile Include="lib\LineEq.cpp" />
     <ClCompile Include="lib\PosInfo.cpp" />
     <ClCompile Include="lib\PosInfo.h" />
+    <ClCompile Include="lib\RouteNode.cpp" />
+    <ClCompile Include="lib\RouteTable.cpp" />
     <ClCompile Include="lib\WaypointInfo.cpp" />
     <ClCompile Include="lib\WaypointInfo.h" />
     <ClCompile Include="MyCar.cpp" />
@@ -46,6 +48,7 @@
     <ClInclude Include="lib\cog_obstacles_to_PosInfo.h" />
     <ClInclude Include="lib\cog_opponent_to_PosInfo.h" />
     <ClInclude Include="lib\cog_predict_road_departure.h" />
+    <ClInclude Include="lib\cog_road_departure.h" />
     <ClInclude Include="lib\cog_waypoints_to_PosInfo.h" />
     <ClInclude Include="lib\ctl_steering.h" />
     <ClInclude Include="lib\ctl_steering_coefficient.h" />
@@ -53,6 +56,8 @@
     <ClInclude Include="lib\example.h" />
     <ClInclude Include="lib\internal_division.h" />
     <ClInclude Include="lib\LineEq.h" />
+    <ClInclude Include="lib\RouteNode.h" />
+    <ClInclude Include="lib\RouteTable.h" />
     <ClInclude Include="src.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

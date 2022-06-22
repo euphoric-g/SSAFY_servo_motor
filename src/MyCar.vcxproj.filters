@@ -56,6 +56,12 @@
     <ClCompile Include="lib\cog_opponent_to_PosInfo.cpp">
       <Filter>lib</Filter>
     </ClCompile>
+    <ClCompile Include="lib\RouteNode.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\RouteTable.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lib">
@@ -101,6 +107,15 @@
       <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="lib\example.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\cog_road_departure.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\RouteNode.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\RouteTable.h">
       <Filter>lib</Filter>
     </ClInclude>
   </ItemGroup>

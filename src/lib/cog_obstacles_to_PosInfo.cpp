@@ -1,5 +1,9 @@
 #include "cog_obstacles_to_PosInfo.h"
 
+#include <algorithm>
+#include "cog_waypoints_to_PosInfo.h"
+#include "cog_locate_conversion.h"
+
 std::vector<PosInfo> cog_obstacles_to_PosInfo(Car::CarStateValues &sensing_info) {
 	return cog_obstacles_to_PosInfo(sensing_info, cog_waypoints_to_PosInfo(sensing_info));
 }

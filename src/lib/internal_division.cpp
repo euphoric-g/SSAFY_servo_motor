@@ -5,3 +5,7 @@ PosInfo internal_division(PosInfo p1, PosInfo p2, float r1, float r2) {
 	float y = (r1 * p2.y + r2 * p1.y) / (r1 + r2);
 	return PosInfo(x, y);
 }
+
+float internal_division(float a, float b, float r1, float r2) {
+	return (r1 * b + r2 * a) / (r1 + r2);
+}

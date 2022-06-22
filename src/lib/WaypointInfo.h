@@ -8,5 +8,4 @@ private:
 public:
 	std::vector<PosInfo> waypoints;
 	WaypointInfo() {}
-	float rate_difficulty(void);
 };

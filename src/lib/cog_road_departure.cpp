@@ -1,8 +1,5 @@
-#include "PosInfo.h"
-#include "../DrivingInterface/DrivingInfo.h"
+#include "cog_road_departure.h"
 
 bool cog_road_departure(Car::CarStateValues &sensing_info) {
-	bool ret = false;
-	// ...
-	return ret;
+	return abs(sensing_info.to_middle) <= sensing_info.half_road_limit;
 }

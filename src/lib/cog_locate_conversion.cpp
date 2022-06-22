@@ -1,5 +1,9 @@
 #include "cog_locate_conversion.h"
 
+#include "LineEq.h"
+#include "internal_division.h"
+#include "cog_waypoints_to_PosInfo.h"
+
 PosInfo cog_locate_conversion(Car::CarStateValues &sensing_info, std::vector<PosInfo> waypoints, float distance, float offset) {
 
 	if (distance < sqrtf(waypoints[0] * waypoints[0])) {

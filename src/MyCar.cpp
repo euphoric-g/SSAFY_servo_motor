@@ -7,8 +7,8 @@
 using namespace std;
 using namespace Car;
 
-bool is_debug = true;
-bool enable_api_control = false;	// true(Controlled by code) /false(Controlled by keyboard)
+bool is_debug = false;
+bool enable_api_control = true;	// true(Controlled by code) /false(Controlled by keyboard)
 
 void test_two_line() {
 	while (1) {
@@ -63,7 +63,12 @@ ControlValues control_driving(CarStateValues sensing_info)
 	// test_two_line();
 	// test_line_eq();
 	// test_line_circle();
+	// test_locate_conversion(sensing_info);
 
+	RouteTable rt(sensing_info, cog_waypoints_to_PosInfo(sensing_info));
+	WaypointInfo routes = rt.getWaypoint();
+	
+	/*
 	cout << "========================= waypoints ==========================\n";
 	for (auto &waypoint : cog_waypoints_to_PosInfo(sensing_info)) {
 		cout << "(" << waypoint.x << ", " << waypoint.y << ")\n";
@@ -72,9 +77,14 @@ ControlValues control_driving(CarStateValues sensing_info)
 	for (auto &obstacle : cog_obstacles_to_PosInfo(sensing_info)) {
 		cout << "(" << obstacle.x << ", " << obstacle.y << ")\n";
 	}
-	cout << "==============================================================\n";
+	cout << "========================= RouteTable =========================\n";
 
-	// test_locate_conversion(sensing_info);
+	for (const auto &waypoint : routes.waypoints) {
+		cout << "(" << waypoint.x << ", " << waypoint.y << ")\n";
+	}
+
+	cout << "==============================================================\n";
+	*/
 
 	if (is_debug)
 	{
@@ -130,13 +140,12 @@ ControlValues control_driving(CarStateValues sensing_info)
 	//	
 
 	// 시나리오 1. Moving straight forward
-	car_controls.steering = 0;
+	/*car_controls.steering = 0;
 	car_controls.throttle = 1;
-	car_controls.brake = 0;
+	car_controls.brake = 0;*/
 
 	// 시나리오 2. basic 예제
 	car_controls = example(sensing_info);
-
 
 	if (is_debug)
 	{

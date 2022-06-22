@@ -1,8 +1,2 @@
 ﻿  MyCar.cpp
-  cog_locate_conversion.cpp
-  cog_obstacles_to_PosInfo.cpp
-  ctl_steering.cpp
-  ctl_steering_coefficient.cpp
-  ctl_throttle_brake.cpp
-  코드를 생성하고 있습니다...
   MyCar.vcxproj -> D:\SSAFY\SSAFY Race\SSAFY_servo_motor\src\Build\Debug\MyCar.exe

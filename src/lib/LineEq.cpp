@@ -1,5 +1,7 @@
 #include "LineEq.h"
 
+#include <cmath>
+
 LineEq::LineEq(PosInfo p1, PosInfo p2) {
 	if (abs(p1.x - p2.x) <= 1e-4) {
 		a = 1;

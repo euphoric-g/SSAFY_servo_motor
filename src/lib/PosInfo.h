@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cmath>
-
 class PosInfo {
 private:
 public:

@@ -1,5 +1,9 @@
 #include "cog_waypoints_to_PosInfo.h"
 
+#include <algorithm>
+#include "LineEq.h"
+#include "ccw.h"
+
 std::vector<PosInfo> cog_waypoints_to_PosInfo(Car::CarStateValues &sensing_info) {
 	using namespace std;
 
