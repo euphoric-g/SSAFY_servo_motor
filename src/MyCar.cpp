@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <algorithm>
 #include <vector>
+#include <numeric>
 #include "RuleBasedDriving.h"
 #include "src.h"
 
@@ -10,75 +11,47 @@ using namespace Car;
 bool is_debug = false;
 bool enable_api_control = true;	// true(Controlled by code) /false(Controlled by keyboard)
 
-void test_two_line() {
-	while (1) {
-		cout << "Enter a, b, c for line equation 1 (ax + by + c = 0) : ";
-		float a, b, c;
-		cin >> a >> b >> c;
-		LineEq line1(a, b, c);
-		cout << "Enter a, b, c for line equation 2 (ax + by + c = 0) : ";
-		cin >> a >> b >> c;
-		LineEq line2(a, b, c);
-		PosInfo crossing = line1 * line2;
-		cout << "crossing at (" << crossing.x << ", " << crossing.y << ")\n";
-	}
-}
-
-void test_line_eq() {
-	while (1) {
-		cout << "Enter slope and a point for line equation : ";
-		float slope, x, y;
-		cin >> slope >> x >> y;
-		LineEq line(slope, PosInfo(x, y));
-		cout << line.a << "x + (" << line.b << ")y + (" << line.c << ") = 0\n";
-	}
-}
-
-void test_line_circle() {
-	while (1) {
-		cout << "Enter a, b, r for circle equation ((x-a)^2 + (y-b)^2 = r^2) : ";
-		float a, b, c;
-		cin >> a >> b >> c;
-		CircEq circ(a, b, c);
-		cout << "Enter a, b, c for line equation (ax + by + c = 0) : ";
-		cin >> a >> b >> c;
-		LineEq line(a, b, c);
-		auto crossing = line * circ;
-		cout << "crossing at (" << crossing.first.x << ", " << crossing.first.y << "), (" << crossing.second.x << ", " << crossing.second.y << ")\n";
-	}
-}
-
-void test_locate_conversion(CarStateValues &sensing_info) {
-	while (1) {
-		cout << "Enter distance, to_middle to calculate : ";
-		float distance, to_middle;
-		cin >> distance >> to_middle;
-		auto calc = cog_locate_conversion(sensing_info, distance, to_middle);
-		cout << "(" << calc.x << ", " << calc.y << ")\n";
-	}
-}
+PosInfo last_target = PosInfo();
 
 ControlValues control_driving(CarStateValues sensing_info)
 {
-	// test_two_line();
-	// test_line_eq();
-	// test_line_circle();
-	// test_locate_conversion(sensing_info);
 
-	RouteTable rt(sensing_info, cog_waypoints_to_PosInfo(sensing_info));
-	WaypointInfo routes = rt.getWaypoint();
-	
-	/*
 	cout << "========================= waypoints ==========================\n";
-	for (auto &waypoint : cog_waypoints_to_PosInfo(sensing_info)) {
+	auto waypoints = cog_waypoints_to_PosInfo(sensing_info);
+	for (auto &waypoint : waypoints) {
 		cout << "(" << waypoint.x << ", " << waypoint.y << ")\n";
 	}
+	PosInfo car = PosInfo(sensing_info.to_middle, 0);
+	LineEq CarLine = LineEq(1 / tanf(sensing_info.moving_angle * acos(-1) / 180), car);
+
+	cout << "CarLine\n";
+	cout << CarLine.a << "x" << (CarLine.b >= 0 ? "+" : "") << CarLine.b << "y" << (CarLine.c >= 0 ? "+" : "") << CarLine.c << "=0\n";
+	
+	auto line = cog_road_departure(sensing_info) ? LineEq(PosInfo(sensing_info.to_middle, 0), waypoints[2]) : LineEq(waypoints[0], waypoints[4]);
+	auto line2 = LineEq(waypoints[waypoints.size()-5], waypoints[waypoints.size()-1]);
+	cout << line.a << "x" << (line.b >= 0 ? "+" : "") << line.b << "y" << (line.c >= 0 ? "+" : "") << line.c << "=0\n";
+
+	PosInfo target = line * line2;
+	if (waypoints[waypoints.size()-5].dist(target) < 15.0f) {
+		cout << "Target is close to endpoint, target point\n(" << target.x << ", " << target.y << ")\n";
+		target = waypoints[waypoints.size() - 1];
+	}
+	cout << "Last Target Point\n(" << last_target.x << ", " << last_target.y << ")\n";
+	last_target = target = internal_division(target, last_target, 1, 1 + sensing_info.speed / 50);
+	
+	cout << "Target Point\n(" << target.x << ", " << target.y << ")\n";
+
 	cout << "========================= obstacles ==========================\n";
 	for (auto &obstacle : cog_obstacles_to_PosInfo(sensing_info)) {
 		cout << "(" << obstacle.x << ", " << obstacle.y << ")\n";
 	}
+	/*
 	cout << "========================= RouteTable =========================\n";
 
+	RouteTable rt(sensing_info, cog_waypoints_to_PosInfo(sensing_info));
+	
+	WaypointInfo routes = rt.getWaypoint2();
+	
 	for (const auto &waypoint : routes.waypoints) {
 		cout << "(" << waypoint.x << ", " << waypoint.y << ")\n";
 	}
@@ -140,12 +113,34 @@ ControlValues control_driving(CarStateValues sensing_info)
 	//	
 
 	// 시나리오 1. Moving straight forward
-	/*car_controls.steering = 0;
+	car_controls.steering = 0;
 	car_controls.throttle = 1;
-	car_controls.brake = 0;*/
+	car_controls.brake = 0;
 
 	// 시나리오 2. basic 예제
-	car_controls = example(sensing_info);
+	// car_controls = example(sensing_info);
+
+	float theta_car = sensing_info.moving_angle;
+	float theta_target = target.y != 0 ? atanf(target.x / target.y) * 180 / acos(-1) : 0;
+	float steering_angle = theta_target - theta_car;
+	float speed_limit = 150 - 3 * (cog_angle_sum(sensing_info, 2, 6) / 5 - 10) - abs(steering_angle);
+	if (speed_limit < 90) speed_limit = 90;
+
+	// car_controls.brake = abs(steering_angle / 1000);
+	if (sensing_info.speed < speed_limit/2) car_controls.brake = 0;
+	if (sensing_info.speed > speed_limit) {
+		car_controls.brake = abs(steering_angle / 1000) + (sensing_info.speed - speed_limit) / 25;
+		if (car_controls.brake >= 1.0) car_controls.brake = 1;
+	}
+	car_controls.throttle = 1 - car_controls.brake;
+	car_controls.steering = steering_angle / 90;
+
+	cout << "[MyCar] Target : (" << target.x << ", " << target.y << "), steering_angle = " << steering_angle << "\n";
+	cout << "theta_car = moving_angle[" << sensing_info.moving_angle << "]\n";
+	cout << "theta_target = atan(target.x / target.y)[" << atanf(target.x / target.y) << "] * 180 / pi = " << theta_target << "\n";
+	cout << "SPEED LIMIT = " << speed_limit << "\n";
+	if (cog_road_departure(sensing_info)) cout << "[ROAD DEPARTURE DETECTED]\n";
+	cout << "brake = " << car_controls.brake << ", throttle = " << car_controls.throttle << ", steering = " << car_controls.steering << "\n";
 
 	if (is_debug)
 	{

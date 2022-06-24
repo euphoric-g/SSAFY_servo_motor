@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClCompile Include="lib\ccw.cpp" />
     <ClCompile Include="lib\CircEq.cpp" />
+    <ClCompile Include="lib\cog_angle_sum.cpp" />
     <ClCompile Include="lib\cog_locate_conversion.cpp" />
     <ClCompile Include="lib\cog_obstacles_to_PosInfo.cpp" />
     <ClCompile Include="lib\cog_opponent_to_PosInfo.cpp" />
+    <ClCompile Include="lib\cog_predict_collision.cpp" />
     <ClCompile Include="lib\cog_predict_road_departure.cpp" />
     <ClCompile Include="lib\cog_road_departure.cpp" />
     <ClCompile Include="lib\cog_waypoints_to_PosInfo.cpp" />
@@ -44,9 +46,11 @@
   <ItemGroup>
     <ClInclude Include="lib\ccw.h" />
     <ClInclude Include="lib\CircEq.h" />
+    <ClInclude Include="lib\cog_angle_sum.h" />
     <ClInclude Include="lib\cog_locate_conversion.h" />
     <ClInclude Include="lib\cog_obstacles_to_PosInfo.h" />
     <ClInclude Include="lib\cog_opponent_to_PosInfo.h" />
+    <ClInclude Include="lib\cog_predict_collision.h" />
     <ClInclude Include="lib\cog_predict_road_departure.h" />
     <ClInclude Include="lib\cog_road_departure.h" />
     <ClInclude Include="lib\cog_waypoints_to_PosInfo.h" />

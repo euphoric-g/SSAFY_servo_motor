@@ -17,6 +17,8 @@
 #include "lib/cog_locate_conversion.h"
 #include "lib/cog_predict_road_departure.h"
 #include "lib/cog_opponent_to_PosInfo.h"
+#include "lib/cog_angle_sum.h"
+#include "lib/cog_road_departure.h"
 #include "lib/ctl_steering_coefficient.h"
 #include "lib/ctl_steering.h"
 #include "lib/ctl_throttle_brake.h"
