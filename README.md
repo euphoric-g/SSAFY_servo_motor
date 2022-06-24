@@ -49,3 +49,12 @@ Microsoft Visual Studio 2017 Community (Windows8.1 SDK 필수)
 * LineEq 클래스에 기울기를 반환하는 grad 함수 구현
 * distance, to_middle 값 쌍을 좌표평면으로 대응시키기 위한 cog_locate_conversion 함수 구현
 * 장애물 정보를 좌표평면으로 대응시키기 위한 cog_obstacles_to_PosInfo 함수 구현
+
+#### 20220624
+
+* 이제 테이블 기반 DP 방식 대신 차량, 근접한 차선의 방향, 멀리있는 차선의 방향을 기반으로 하는 알고리즘을 사용합니다.   
+* PosInfo 클래스에 dist 함수 구현(점과 점 사이의 거리)
+* LineEq 클래스에 dist 함수 구현(점과 직선 사이의 거리)
+* cog_waypoints_to_PosInfo 함수가 때때로 차량 후방 위치를 반환하는 버그 수정
+* 전방 특정 구간의 각도 변화 합을 구하는 함수 cog_angle_sum 구현
+* 차선 이탈 여부를 반환하는 cog_road_departure 함수의 버그 수정

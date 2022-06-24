@@ -24,8 +24,24 @@ LineEq LineEq::operator-(LineEq rhs) { return LineEq(a - rhs.a, b - rhs.b, c - r
 
 PosInfo LineEq::operator*(LineEq rhs) {
 	float &a1 = a, &b1 = b, &c1 = c, &a2 = rhs.a, &b2 = rhs.b, &c2 = rhs.c;
-	float x = (b1 * c2 - b2 * c1) / (a1 * b2 - a2 * b1);
-	float y = (-a1 * x / b1) - (c1 / b1);
+	float x, y;
+	if (abs(b1) <= 1e-4 || abs(b2) <= 1e-4) {
+		if (abs(b1) <= 1e-4 && abs(b2) > 1e-4) {
+			x = -c1;
+			y = (a2 * c1 - c2) / b2;
+		}
+		else if (abs(b2) <= 1e-4 && abs(b1) > 1e-4) {
+			x = -c2;
+			y = (a1 * c2 - c1) / b1;
+		}
+		else {
+			return PosInfo(0, 100);
+		}
+	}
+	else {
+		x = (b1 * c2 - b2 * c1) / (a1 * b2 - a2 * b1);
+		y = (-a1 * x / b1) - (c1 / b1);
+	}
 	return PosInfo(x, y);
 }
 
@@ -56,4 +72,8 @@ std::pair<PosInfo, PosInfo> LineEq::operator*(CircEq rhs) {
 
 float LineEq::grad() {
 	return -a / b;
+}
+
+float LineEq::dist(PosInfo p) {
+	return abs(a * p.x + b * p.y + c) / sqrtf(a*a + b * b + c);
 }

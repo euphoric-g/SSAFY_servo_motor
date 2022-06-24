@@ -38,14 +38,14 @@ PosInfo cog_locate_conversion(Car::CarStateValues &sensing_info, std::vector<Pos
 	LineEq crossing_line(LineEq(from, to).grad(), crossing);
 	PosInfo unit_vector = PosInfo(1, -1/crossing_line.grad()).normalize();
 
-	std::cout << "locate_conversion distance : " << distance << ", offset : " << offset << "\n";
-	std::cout << "accumulate : " << accumulate << ", cursor : " << cursor << "\n";
-	std::cout << "from : " << from.x << ", " << from.y << ")\n";
-	std::cout << "to : " << to.x << ", " << to.y << "\n";
-	std::cout << "crossing : " << crossing.x << ", " << crossing.y << " = internal_division(from, to) with ratio " << (distance - accumulate) << " : " << (10 - (distance - accumulate)) << "\n";
-	std::cout << "crossing_line : (" << crossing_line.a << ")x+(" << crossing_line.b << ")y+" << crossing_line.c << "=0\n";
-	std::cout << "unit_vector : " << unit_vector.x << ", " << unit_vector.y << "\n";
-	std::cout << "return : " << (crossing + unit_vector * offset).x << ", " << (crossing + unit_vector * offset).y << "\n";
+	//std::cout << "locate_conversion distance : " << distance << ", offset : " << offset << "\n";
+	//std::cout << "accumulate : " << accumulate << ", cursor : " << cursor << "\n";
+	//std::cout << "from : " << from.x << ", " << from.y << ")\n";
+	//std::cout << "to : " << to.x << ", " << to.y << "\n";
+	//std::cout << "crossing : " << crossing.x << ", " << crossing.y << " = internal_division(from, to) with ratio " << (distance - accumulate) << " : " << (10 - (distance - accumulate)) << "\n";
+	//std::cout << "crossing_line : (" << crossing_line.a << ")x+(" << crossing_line.b << ")y+" << crossing_line.c << "=0\n";
+	//std::cout << "unit_vector : " << unit_vector.x << ", " << unit_vector.y << "\n";
+	//std::cout << "return : " << (crossing + unit_vector * offset).x << ", " << (crossing + unit_vector * offset).y << "\n";
 
 	return crossing + unit_vector * offset;
 }

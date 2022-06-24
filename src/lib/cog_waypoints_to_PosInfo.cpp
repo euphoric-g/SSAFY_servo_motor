@@ -38,7 +38,13 @@ std::vector<PosInfo> cog_waypoints_to_PosInfo(Car::CarStateValues &sensing_info)
 		auto candidates = approx * circ;
 
 		auto calc_ccw = ccw((ret.size() > 1 ? ret[ret.size()-2] : PosInfo(0, 0)), PosInfo(x, y), candidates.first);
-		PosInfo choose = (calc_ccw * (decision - last_decision) <= 0) ? candidates.first : candidates.second;
+		PosInfo choose;
+		if (calc_ccw * (decision - last_decision) <= 0) {
+			choose = candidates.first;
+			if ((ret.back() - choose)*(ret.back() - choose) > (ret.back()-candidates.second)*(ret.back()-candidates.second) * 2) choose = candidates.second;		}
+		else {
+			choose = candidates.second;
+			if ((ret.back() - choose)*(ret.back() - choose) > (ret.back() - candidates.first)*(ret.back() - candidates.first) * 2) choose = candidates.first;		}
 
 		/*
 		std::cout << "i = " << i << "\n";

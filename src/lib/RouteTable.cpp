@@ -38,6 +38,9 @@ RouteTable::RouteTable(Car::CarStateValues &sensing_info, std::vector<PosInfo> w
 	: sensing_info(sensing_info), waypoints(waypoints) {
 	car_moving_angle = sensing_info.moving_angle;
 	car_to_middle = sensing_info.to_middle;
+	obstacles = cog_obstacles_to_PosInfo(sensing_info);
+
+	// 1번 테이블 DP 방식
 
 	grid_size = 0.5;
 	rows = (int)(150.0 / grid_size);
@@ -51,7 +54,7 @@ RouteTable::RouteTable(Car::CarStateValues &sensing_info, std::vector<PosInfo> w
 
 		float dist = grid_size * r;
 		auto cu = crossing_and_unit_vector(waypoints, dist);
-		// std::cout << "initializing row = " << r << "\ndistance = " << dist << "\ncrossing = " << cu.first.x << ", " << cu.first.y << "\nunit_vector = " << cu.second.x << ", " << cu.second.y << '\n';
+		//std::cout << "initializing row = " << r << "\ndistance = " << dist << "\ncrossing = " << cu.first.x << ", " << cu.first.y << "\nunit_vector = " << cu.second.x << ", " << cu.second.y << '\n';
 		for (int c = 0; c < cols; c++) {
 			auto &tb = table[r][c];
 			float os = (c - center_col) * grid_size;
@@ -64,18 +67,31 @@ RouteTable::RouteTable(Car::CarStateValues &sensing_info, std::vector<PosInfo> w
 			tb.blocked_by_obstacle = 0.001f;
 			tb.ccw_sum = 0.001f;
 
+			PosInfo closest_obstacle;
+
 			for (auto &obstacle : obstacles) {
-				float dif = (obstacle - tb.pos) * (obstacle - tb.pos);
-				if (dif > tb.blocked_by_obstacle) tb.blocked_by_obstacle = 1000 / (dif * dif);
+				float dif = sqrtf((obstacle - tb.pos) * (obstacle - tb.pos)) - 1;
+				dif = abs(1000 / (dif * dif * dif * dif));
+				if (dif > tb.blocked_by_obstacle) {
+					closest_obstacle = obstacle;
+					tb.blocked_by_obstacle = dif;
+					//std::cout << "blocked_by_obstacle = " << tb.blocked_by_obstacle << " at (" << tb.pos.x << ", " << tb.pos.y << "), dif = " << dif << "\n";
+					//std::cout << "obstacle : (" << obstacle.x << ", " << obstacle.y << "), pos : (" << tb.pos.x << ", " << tb.pos.y << "), dif = " << sqrtf((obstacle - tb.pos) * (obstacle - tb.pos)) << "\n";
+				}
 			}
+
+			/*if (tb.blocked_by_obstacle > 100) {
+				std::cout << "blocked_by_obstacle = " << tb.blocked_by_obstacle << " at (" << tb.pos.x << ", " << tb.pos.y << ")\n";
+				std::cout << "obstacle : (" << closest_obstacle.x << ", " << closest_obstacle.y << "), pos : (" << tb.pos.x << ", " << tb.pos.y << "), dif = " << sqrtf((closest_obstacle - tb.pos) * (closest_obstacle - tb.pos)) << "\n";
+			}*/
 
 			if (!r) {
 				LineEq moving(1 / tanf(car_moving_angle * acos(-1) / 180), PosInfo(car_to_middle, 0));
 				auto backpts = CircEq(PosInfo(car_to_middle, 0), 1) * moving;
 				PosInfo backpoint = backpts.first.y > backpts.second.y ? backpts.second : backpts.first;
 				float _ccw = ccw(backpoint, PosInfo(car_to_middle, 0), tb.pos);
-				float d = (tb.pos - PosInfo(car_to_middle, 0))*(tb.pos - PosInfo(car_to_middle, 0));
-				tb.weight = d + _ccw * _ccw * _ccw * _ccw;
+				float d = sqrtf((tb.pos - PosInfo(car_to_middle, 0))*(tb.pos - PosInfo(car_to_middle, 0)));
+				tb.weight = d + abs(0.1 * _ccw * _ccw * _ccw);
 				tb.distance_from_last = d;
 				tb.last = nullptr;
 				tb.last_ccw = _ccw;
@@ -93,10 +109,17 @@ RouteTable::RouteTable(Car::CarStateValues &sensing_info, std::vector<PosInfo> w
 					}
 				}
 			}
-			// std::cout << "[" << r << "][" << c << "]=" << tb.weight << " ";
+			//std::cout << "[" << r << "][" << c << "]=" << tb.weight << " ";
 		}
-		// std::cout << "\n";
+		//std::cout << "\n";
 	}
+	/*
+	float d_unit = 2.0f;
+	std::vector<std::pair<PosInfo, PosInfo>> crossing_and_unit_vectors;
+	for (float distance = d_unit; distance < 190; distance += d_unit) {
+
+	}
+	*/
 }
 
 WaypointInfo RouteTable::getWaypoint() {
@@ -113,6 +136,24 @@ WaypointInfo RouteTable::getWaypoint() {
 	while (route_trace->last != nullptr) {
 		waypoints.push_back(route_trace->pos);
 		route_trace = route_trace->last;
+	}
+	return winfo;
+}
+
+WaypointInfo RouteTable::getWaypoint2() {
+	WaypointInfo winfo;
+	auto &waypoints = winfo.waypoints;
+	for (int i = 0; i < rows; i++) {
+		float min_weight = 1e8;
+		float min_index = -1;
+		for (int j = 0; j < cols; j++) {
+			if (min_weight > table[i][j].weight) {
+				min_weight = table[i][j].weight;
+				min_index = j;
+			}
+		}
+		if (min_index == -1) continue;
+		waypoints.push_back(table[i][min_index].pos);
 	}
 	return winfo;
 }

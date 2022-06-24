@@ -7,6 +7,7 @@
 #include "WaypointInfo.h"
 #include "cog_locate_conversion.h"
 #include "cog_waypoints_to_PosInfo.h"
+#include "cog_obstacles_to_PosInfo.h"
 
 class RouteTable {
 private:
@@ -24,4 +25,6 @@ public:
 	std::vector<std::vector<RouteNode>> table;
 	RouteTable(Car::CarStateValues &sensing_info, std::vector<PosInfo> waypoints);
 	WaypointInfo getWaypoint();
+	WaypointInfo getWaypoint2();
+
 };

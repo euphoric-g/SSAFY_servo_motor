@@ -26,3 +26,8 @@ PosInfo PosInfo::normalize() {
 	float f = sqrtf((*this) * (*this));
 	return PosInfo(this->x / f, this->y / f);
 }
+
+float PosInfo::dist(PosInfo rhs) {
+	PosInfo p = rhs - *this;
+	return p * p;
+}

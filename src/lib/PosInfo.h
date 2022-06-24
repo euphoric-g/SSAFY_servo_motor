@@ -12,4 +12,5 @@ public:
 	float operator/(PosInfo rhs);
 	PosInfo operator*(float coef);
 	PosInfo normalize();
+	float dist(PosInfo rhs);
 };
