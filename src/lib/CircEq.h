@@ -17,4 +17,5 @@ public:
 	CircEq(float a, float b, float r) : a(a), b(b), r(r) {}
 	CircEq(PosInfo p1, float r) : a(p1.x), b(p1.y), r(r) {}
 	std::pair<PosInfo, PosInfo> operator*(LineEq rhs);
+	int intersections(LineEq rhs);
 };

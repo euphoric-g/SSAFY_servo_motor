@@ -4,5 +4,6 @@
 
 #include "PosInfo.h"
 #include "LineEq.h"
+#include "CircEq.h"
 
-float cog_predict_collision(std::vector<PosInfo> obstacles, LineEq line);
+int cog_predict_collision(std::vector<PosInfo> obstacles, LineEq line);

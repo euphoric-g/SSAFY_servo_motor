@@ -37,8 +37,6 @@
     <ClCompile Include="lib\LineEq.cpp" />
     <ClCompile Include="lib\PosInfo.cpp" />
     <ClCompile Include="lib\PosInfo.h" />
-    <ClCompile Include="lib\RouteNode.cpp" />
-    <ClCompile Include="lib\RouteTable.cpp" />
     <ClCompile Include="lib\WaypointInfo.cpp" />
     <ClCompile Include="lib\WaypointInfo.h" />
     <ClCompile Include="MyCar.cpp" />
@@ -60,8 +58,6 @@
     <ClInclude Include="lib\example.h" />
     <ClInclude Include="lib\internal_division.h" />
     <ClInclude Include="lib\LineEq.h" />
-    <ClInclude Include="lib\RouteNode.h" />
-    <ClInclude Include="lib\RouteTable.h" />
     <ClInclude Include="src.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

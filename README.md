@@ -58,3 +58,9 @@ Microsoft Visual Studio 2017 Community (Windows8.1 SDK 필수)
 * cog_waypoints_to_PosInfo 함수가 때때로 차량 후방 위치를 반환하는 버그 수정
 * 전방 특정 구간의 각도 변화 합을 구하는 함수 cog_angle_sum 구현
 * 차선 이탈 여부를 반환하는 cog_road_departure 함수의 버그 수정
+
+#### 20220625
+
+* 더 이상 사용하지 않는 RouteTable, RouteNode 클래스와 함수 제거
+* CircEq 클래스에 직선과 교차점 개수를 반환하는 intersections 함수 추가
+* 특정 방향으로 주행시 장애물과의 충돌 여부를 감지하는 cog_predict_collision 함수 추가
