@@ -44,7 +44,7 @@ Microsoft Visual Studio 2017 Community (Windows8.1 SDK 필수)
 
 #### 20220621
 
-* 직선의 내분점 계산을 위한 internal_division 함수 구현
+* 직선의 내분점 계산을 위한 internal_division 함수 구현 
 * PosInfo 클래스에 normalize 함수 구현(방향을 유지하며 원점과의 거리를 1로 만듦)
 * LineEq 클래스에 기울기를 반환하는 grad 함수 구현
 * distance, to_middle 값 쌍을 좌표평면으로 대응시키기 위한 cog_locate_conversion 함수 구현
@@ -64,3 +64,10 @@ Microsoft Visual Studio 2017 Community (Windows8.1 SDK 필수)
 * 더 이상 사용하지 않는 RouteTable, RouteNode 클래스와 함수 제거
 * CircEq 클래스에 직선과 교차점 개수를 반환하는 intersections 함수 추가
 * 특정 방향으로 주행시 장애물과의 충돌 여부를 감지하는 cog_predict_collision 함수 추가
+* 충돌 예상 시 새로운 목적지 후보를 검색하는 함수 추가
+
+#### 20220627
+
+* 기울기를 주행각으로 변환하는 grad_to_moving_angle 함수 추가
+* 사용하지 않는 waypoints 클래스, ctl 함수들 제거
+* 주행 회피 알고리즘 테스트 중

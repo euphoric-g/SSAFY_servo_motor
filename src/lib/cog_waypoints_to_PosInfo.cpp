@@ -31,7 +31,7 @@ std::vector<PosInfo> cog_waypoints_to_PosInfo(Car::CarStateValues &sensing_info)
 			approx = LineEq(PosInfo(x, y), PosInfo(x, y + 1));
 		}
 		else {
-			rad = 1 / tanf(decision * acos(-1) / 180);
+			rad = 1 / tanf(decision * acosf(-1) / 180);
 			approx = LineEq(rad, PosInfo(x, y));
 		}
 		CircEq circ(to_middle, 0, dist);

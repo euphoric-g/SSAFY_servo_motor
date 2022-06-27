@@ -16,19 +16,21 @@ PosInfo last_target = PosInfo();
 ControlValues control_driving(CarStateValues sensing_info)
 {
 
-	cout << "========================= waypoints ==========================\n";
+	// cout << "========================= waypoints ==========================\n";
 	auto waypoints = cog_waypoints_to_PosInfo(sensing_info);
+	auto obstacles = cog_obstacles_to_PosInfo(sensing_info);
+	
 	for (auto &waypoint : waypoints) {
 		cout << "(" << waypoint.x << ", " << waypoint.y << ")\n";
 	}
 	PosInfo car = PosInfo(sensing_info.to_middle, 0);
-	LineEq CarLine = LineEq(1 / tanf(sensing_info.moving_angle * acos(-1) / 180), car);
+	LineEq CarLine = LineEq(1 / tanf(sensing_info.moving_angle * acosf(-1) / 180), car);
 
 	cout << "CarLine\n";
 	cout << CarLine.a << "x" << (CarLine.b >= 0 ? "+" : "") << CarLine.b << "y" << (CarLine.c >= 0 ? "+" : "") << CarLine.c << "=0\n";
 	
 	auto line = cog_road_departure(sensing_info) ? LineEq(PosInfo(sensing_info.to_middle, 0), waypoints[2]) : LineEq(waypoints[0], waypoints[4]);
-	auto line2 = LineEq(waypoints[waypoints.size()-5], waypoints[waypoints.size()-1]);
+	auto line2 = LineEq(waypoints[waypoints.size()-11], waypoints[waypoints.size()-8]);
 	cout << line.a << "x" << (line.b >= 0 ? "+" : "") << line.b << "y" << (line.c >= 0 ? "+" : "") << line.c << "=0\n";
 
 	PosInfo target = line * line2;
@@ -36,13 +38,18 @@ ControlValues control_driving(CarStateValues sensing_info)
 		cout << "Target is close to endpoint, target point\n(" << target.x << ", " << target.y << ")\n";
 		target = waypoints[waypoints.size() - 1];
 	}
+
 	cout << "Last Target Point\n(" << last_target.x << ", " << last_target.y << ")\n";
 	last_target = target = internal_division(target, last_target, 1, 1 + sensing_info.speed / 50);
-	
 	cout << "Target Point\n(" << target.x << ", " << target.y << ")\n";
 
+	if (cog_predict_collision(obstacles, car, CarLine, LineEq(car, target))) {
+		target = cog_obstacle_avoidance(sensing_info, obstacles, LineEq(car, target));
+		cout << "[avoidance system] target point modified\n(" << target.x << ", " << target.y << ")\n";
+	}
+
 	cout << "========================= obstacles ==========================\n";
-	for (auto &obstacle : cog_obstacles_to_PosInfo(sensing_info)) {
+	for (auto &obstacle : obstacles) {
 		cout << "(" << obstacle.x << ", " << obstacle.y << ")\n";
 	}
 	/*
@@ -121,9 +128,9 @@ ControlValues control_driving(CarStateValues sensing_info)
 	// car_controls = example(sensing_info);
 
 	float theta_car = sensing_info.moving_angle;
-	float theta_target = target.y != 0 ? atanf(target.x / target.y) * 180 / acos(-1) : 0;
+	float theta_target = target.y != 0 ? atanf(target.x / target.y) * 180 / acosf(-1) : 0;
 	float steering_angle = theta_target - theta_car;
-	float speed_limit = 150 - 3 * (cog_angle_sum(sensing_info, 2, 6) / 5 - 10) - abs(steering_angle);
+	float speed_limit = 140 - 4 * (abs(grad_to_moving_angle(LineEq(car, waypoints[6]).grad())) - 10) - 2 * (abs(steering_angle) - 5);
 	if (speed_limit < 90) speed_limit = 90;
 
 	// car_controls.brake = abs(steering_angle / 1000);
@@ -150,6 +157,11 @@ ControlValues control_driving(CarStateValues sensing_info)
 	//
 	// Editing area ends
 	// ===========================================================
+	if (cog_distance_to_closest_obstacle(sensing_info, obstacles) < 3 && sensing_info.speed < 5) {
+		car_controls.throttle = -1;
+		car_controls.brake = 0;
+		car_controls.steering = 0;
+	}
 
 	return car_controls;
 }

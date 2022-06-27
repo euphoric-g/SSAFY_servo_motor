@@ -8,12 +8,6 @@
     <ClCompile Include="lib\PosInfo.h">
       <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="lib\WaypointInfo.h">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\WaypointInfo.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
     <ClCompile Include="lib\example.cpp">
       <Filter>lib</Filter>
     </ClCompile>
@@ -27,15 +21,6 @@
       <Filter>lib</Filter>
     </ClCompile>
     <ClCompile Include="lib\cog_road_departure.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\ctl_steering.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\ctl_steering_coefficient.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\ctl_throttle_brake.cpp">
       <Filter>lib</Filter>
     </ClCompile>
     <ClCompile Include="lib\LineEq.cpp">
@@ -60,6 +45,15 @@
       <Filter>lib</Filter>
     </ClCompile>
     <ClCompile Include="lib\cog_predict_collision.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\cog_obstacle_avoidance.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\cog_distance_to_closest_obstacle.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\grad_to_moving_angle.cpp">
       <Filter>lib</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,15 +91,6 @@
     <ClInclude Include="lib\cog_predict_road_departure.h">
       <Filter>lib</Filter>
     </ClInclude>
-    <ClInclude Include="lib\ctl_steering_coefficient.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\ctl_steering.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\ctl_throttle_brake.h">
-      <Filter>lib</Filter>
-    </ClInclude>
     <ClInclude Include="lib\example.h">
       <Filter>lib</Filter>
     </ClInclude>
@@ -116,6 +101,15 @@
       <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="lib\cog_predict_collision.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\cog_obstacle_avoidance.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\cog_distance_to_closest_obstacle.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\grad_to_moving_angle.h">
       <Filter>lib</Filter>
     </ClInclude>
   </ItemGroup>
