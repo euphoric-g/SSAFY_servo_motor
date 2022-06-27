@@ -30,7 +30,7 @@ ControlValues control_driving(CarStateValues sensing_info)
 	cout << CarLine.a << "x" << (CarLine.b >= 0 ? "+" : "") << CarLine.b << "y" << (CarLine.c >= 0 ? "+" : "") << CarLine.c << "=0\n";
 	
 	auto line = cog_road_departure(sensing_info) ? LineEq(PosInfo(sensing_info.to_middle, 0), waypoints[2]) : LineEq(waypoints[0], waypoints[4]);
-	auto line2 = LineEq(waypoints[waypoints.size()-11], waypoints[waypoints.size()-8]);
+	auto line2 = LineEq(waypoints[waypoints.size()-1], waypoints[waypoints.size()-10]);
 	cout << line.a << "x" << (line.b >= 0 ? "+" : "") << line.b << "y" << (line.c >= 0 ? "+" : "") << line.c << "=0\n";
 
 	PosInfo target = line * line2;
@@ -130,7 +130,7 @@ ControlValues control_driving(CarStateValues sensing_info)
 	float theta_car = sensing_info.moving_angle;
 	float theta_target = target.y != 0 ? atanf(target.x / target.y) * 180 / acosf(-1) : 0;
 	float steering_angle = theta_target - theta_car;
-	float speed_limit = 140 - 4 * (abs(grad_to_moving_angle(LineEq(car, waypoints[6]).grad())) - 10) - 2 * (abs(steering_angle) - 5);
+	float speed_limit = 140 - 1 * (abs(grad_to_moving_angle(LineEq(car, waypoints[8]).grad())) - 15) - 1 * (abs(steering_angle) - 15);
 	if (speed_limit < 90) speed_limit = 90;
 
 	// car_controls.brake = abs(steering_angle / 1000);
